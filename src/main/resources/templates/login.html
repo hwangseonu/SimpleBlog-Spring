@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
+  <title>Login</title>
+  <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-
+<div class="page-wrapper">
+  <div class="login-wrapper">
+    <p class="login-title">LOGIN</p>
+    <form action="/login" method="post" class="login-form">
+      <input title="username" name="username" placeholder="Username">
+      <input title="password" name="password" placeholder="Password" type="password">
+      <button type="submit" class="btn-login">로그인</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>
