@@ -3,9 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
+  <title>Blog</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<header class="page-header">
+  <div class="title-wrapper">
+    <i class="profile fas fa-user-circle"></i>
+    <p class="title">Blog</p>
+    <p class="description">Spring 으로 만든 블로그 서비스</p>
+    <div th:if="${user == null}" class="nav">
+      <a href="#"><span class="nav-item login">로그인</span></a>
+      <a href="#"><span class="nav-item register" style="margin-left: 20px;">회원가입</span></a>
+    </div>
+    <div th:unless="${user == null}" class="nav">
+      <a href="#"><span class="nav-item logout">로그아웃</span></a>
+    </div>
+  </div>
+</header>
+<section>
 
+</section>
+<footer>
+
+</footer>
 </body>
 </html>
