@@ -13,18 +13,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 720px;
-  height: 560px;
-  background-color: #5a5a5a;
-}
-
-.error-inner {
   text-align: center;
-  width: 680px;
-  height: 520px;
-  background-color: #ffffff;
+  min-width: 720px;
+  border: 20px solid #5a5a5a;
 }
-
 .error-title {
   font-size: 3em;
   font-weight: bold;
