@@ -13,7 +13,7 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
     public ModelAndView notFoundHandler(NotFoundException e) {
-        ModelAndView mav = new ModelAndView("error/404");
+        ModelAndView mav = new ModelAndView("error");
         mav.addObject("message", e.getMessage());
         return mav;
     }
