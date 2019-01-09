@@ -14,6 +14,7 @@ public class ExceptionAdvice {
     @ExceptionHandler(NotFoundException.class)
     public ModelAndView notFoundHandler(NotFoundException e) {
         ModelAndView mav = new ModelAndView("error");
+        mav.addObject("title", "404 Not Found");
         mav.addObject("message", e.getMessage());
         return mav;
     }
