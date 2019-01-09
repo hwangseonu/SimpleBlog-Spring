@@ -7,13 +7,12 @@
   <title th:text="${title}"></title>
 </head>
 <body>
-<div class="page-wrapper">
-  <div class="error-wrapper">
-    <div>
-      <p class="error-title" th:text="${title}"></p>
-      <span class="error-message" th:text="${message}"></span>
-    </div>
-  </div>
-</div>
+<script type="text/javascript" th:inline="javascript">
+  /*<![CDATA[*/
+  var message = /*[[ ${message} ]]*/;
+  var after = /*[[ ${after} ]]*/;
+  alert(message);
+  location.href = after;
+</script>
 </body>
 </html>

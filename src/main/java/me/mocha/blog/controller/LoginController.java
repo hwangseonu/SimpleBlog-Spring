@@ -34,7 +34,7 @@ public class LoginController {
         User user = userRepository.findById(username).orElse(null);
 
         if (user == null) {
-            throw new NotFoundException("Cannot find user.");
+            throw new NotFoundException("Cannot find user.", "/login");
         }
 
         return "redirect:/";

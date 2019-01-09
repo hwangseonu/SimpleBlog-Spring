@@ -16,6 +16,7 @@ public class ExceptionAdvice {
         ModelAndView mav = new ModelAndView("error");
         mav.addObject("title", "404 Not Found");
         mav.addObject("message", e.getMessage());
+        mav.addObject("after", e.getAfter());
         return mav;
     }
 
