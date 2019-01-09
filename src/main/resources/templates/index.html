@@ -12,7 +12,8 @@
 <header class="page-header">
   <div class="title-wrapper">
     <i class="profile fas fa-user-circle"></i>
-    <p class="title">Blog</p>
+    <p th:if="${user == null}" class="title">Blog</p>
+    <p th:unless="${user == null}" class="title" th:text="${user.nickname}"></p>
     <p class="description">Spring 으로 만든 블로그 서비스</p>
     <div th:if="${user == null}" class="nav">
       <a href="/login"><span class="nav-item login">로그인</span></a>
