@@ -1,7 +1,8 @@
 package me.mocha.blog.controller;
 
 
-import me.mocha.blog.exception.NotFoundException;
+import me.mocha.blog.exception.IncorrectPasswordException;
+import me.mocha.blog.exception.UserNotFoundException;
 import me.mocha.blog.model.entity.User;
 import me.mocha.blog.model.repository.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -32,11 +33,13 @@ public class LoginController {
     @PostMapping
     public String signIn(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
         User user = userRepository.findById(username).orElse(null);
-
         if (user == null) {
-            throw new NotFoundException("Cannot find user.", "/login");
+            throw new UserNotFoundException("Cannot find user.", "/login");
         }
-
+        if (!user.verify(password)) {
+            throw new IncorrectPasswordException("올바르지 않은 패스워드", "/login");
+        }
+        session.setAttribute("user", user);
         return "redirect:/";
     }
 

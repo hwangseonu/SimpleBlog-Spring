@@ -30,4 +30,8 @@ public class User {
     @Setter
     private String nickname;
 
+    public boolean verify(String password) {
+        return this.password.equals(password);
+    }
+
 }
