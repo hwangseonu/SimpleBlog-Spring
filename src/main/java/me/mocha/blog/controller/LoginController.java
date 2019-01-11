@@ -25,13 +25,13 @@ public class LoginController {
     }
 
     @GetMapping
-    public ModelAndView login(ModelAndView mav) {
+    public ModelAndView view(ModelAndView mav) {
         mav.setViewName("login");
         return mav;
     }
 
     @PostMapping
-    public String signIn(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
         User user = userRepository.findById(username).orElse(null);
         if (user == null) {
             throw new UserNotFoundException("Cannot find user.", "/login");

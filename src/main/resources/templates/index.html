@@ -17,7 +17,7 @@
     <p class="description">Spring 으로 만든 블로그 서비스</p>
     <div th:if="${user == null}" class="nav">
       <a href="/login"><span class="nav-item login">로그인</span></a>
-      <a href="#"><span class="nav-item register" style="margin-left: 20px;">회원가입</span></a>
+      <a href="/register"><span class="nav-item register" style="margin-left: 20px;">회원가입</span></a>
     </div>
     <div th:unless="${user == null}" class="nav">
       <a href="#"><span class="nav-item logout">로그아웃</span></a>
