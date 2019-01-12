@@ -31,8 +31,7 @@ public class Post {
     private long views;
 
     @Getter
-    @Column(nullable = false)
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "username", nullable = false)
     @ManyToOne
     private User user;
 

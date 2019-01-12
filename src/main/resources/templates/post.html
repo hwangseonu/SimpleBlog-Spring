@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/post.css">
+</head>
+<body>
+<header class="page-header">
+  <div class="title-wrapper">
+    <i class="profile fas fa-user-circle"></i>
+    <p th:if="${user == null}" class="title">Blog</p>
+    <p th:unless="${user == null}" class="title" th:text="${user.nickname}"></p>
+    <p class="description">Spring 으로 만든 블로그 서비스</p>
+    <div th:if="${user == null}" class="nav">
+      <a href="/login"><span class="nav-item login">로그인</span></a>
+      <a href="/register"><span class="nav-item register" style="margin-left: 20px;">회원가입</span></a>
+    </div>
+    <div th:unless="${user == null}" class="nav">
+      <a href="/logout"><span class="nav-item logout">로그아웃</span></a>
+    </div>
+  </div>
+</header>
+<section>
+  <header class="post-header">
+    <p class="post-title" th:text="${post.title}"></p>
+  </header>
+</section>
+</body>
+</html>
