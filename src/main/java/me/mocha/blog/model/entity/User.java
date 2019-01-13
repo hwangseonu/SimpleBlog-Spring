@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User {
+public class User{
 
     @Id
     @Column(length = 100)
@@ -32,6 +32,11 @@ public class User {
 
     public boolean verify(String password) {
         return this.password.equals(password);
+    }
+
+    public boolean equals(User user) {
+        if (user == null) return false;
+        return user.username.equals(username) && user.nickname.equals(nickname);
     }
 
 }
