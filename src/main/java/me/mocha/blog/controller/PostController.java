@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -26,8 +27,16 @@ public class PostController {
     public ModelAndView view(@PathVariable("id") long id, ModelAndView mav, HttpSession session) {
         User user = (User) session.getAttribute("user");
         Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("post not found!", "/"));
+        mav.addObject("user", user);
         mav.addObject("post", post);
         mav.setViewName("post");
+        return mav;
+    }
+
+    @GetMapping("/editor")
+    public ModelAndView editor(@RequestParam("id") Long id, ModelAndView mav) {
+
+        mav.setViewName("editor");
         return mav;
     }
 
