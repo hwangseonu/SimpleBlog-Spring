@@ -2,6 +2,7 @@ package me.mocha.blog.controller;
 
 import me.mocha.blog.exception.ApplicationException;
 import me.mocha.blog.exception.PostNotFoundException;
+import me.mocha.blog.exception.UnauthorizedException;
 import me.mocha.blog.model.entity.Post;
 import me.mocha.blog.model.entity.User;
 import me.mocha.blog.model.repository.PostRepository;
@@ -23,10 +24,13 @@ public class EditorController {
         this.postRepository = postRepository;
     }
 
-    @GetMapping("/editor")
-    public ModelAndView view(@RequestParam("id") Long id, ModelAndView mav, HttpSession session) {
+    @GetMapping
+    public ModelAndView view(@RequestParam(value = "id", required = false) Long id, ModelAndView mav, HttpSession session) {
         User user = (User) session.getAttribute("user");
         Post post = null;
+        if (user == null) {
+            throw new UnauthorizedException("Please login", "/login");
+        }
         if (id != null) {
             post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("Cannot find post by id", "/"));
             if (!post.getUser().equals(user)) {
