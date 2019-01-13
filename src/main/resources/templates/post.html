@@ -20,7 +20,8 @@
       <a href="/register"><span class="nav-item register" style="margin-left: 20px;">회원가입</span></a>
     </div>
     <div th:unless="${user == null}" class="nav">
-      <a href="/logout"><span class="nav-item logout">로그아웃</span></a>
+      <a href="/editor"><span class="nav-item editor">글쓰기</span></a>
+      <a href="/logout"><span class="nav-item logout" style="margin-left: 20px;">로그아웃</span></a>
     </div>
   </div>
 </header>
