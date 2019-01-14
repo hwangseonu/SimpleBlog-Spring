@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="page-wrapper">
-      <form action="/post" method="post" class="editor-form">
+      <form th:action="${post} == null ? 'post' : '/post/${post.id}/edit'" method="post" class="editor-form">
         <input title="title" name="title" placeholder="제목" th:value="${post} == null ? '' : ${post.title}"/>
         <textarea name="content" placeholder="내용을 입력하세요" th:text="${post} == null ? '' : ${post.title}"></textarea>
         <button type="submit">글쓰기</button>

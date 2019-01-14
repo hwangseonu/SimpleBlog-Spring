@@ -53,6 +53,24 @@ public class PostController {
         return "redirect:/post/"+post.getId();
     }
 
-
+    @PostMapping("/{id}/edit")
+    public String edit(
+            @PathVariable("id") Long id,
+            @RequestParam("title") String title,
+            @RequestParam("content") String content,
+            HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            throw new UnauthorizedException("Please login", "/login");
+        }
+        Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("Post not found", "cannot find post by id"));
+        post.setTitle(title);
+        post.setContent(content);
+        post = postRepository.save(post);
+        if (post == null) {
+            throw new ApplicationException("Server error", "cannot save post", "/", 500);
+        }
+        return "redirect:/post/"+post.getId();
+    }
 
 }
