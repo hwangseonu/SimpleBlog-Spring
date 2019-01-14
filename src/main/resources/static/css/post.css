@@ -1,1 +1,24 @@
 @import "default.css";
+
+.page-section {
+    margin: 200px 10% 200px calc(500px + 10%);
+}
+
+.post-header {
+    border-bottom: 2px solid #0e4a7a;
+    margin-bottom: 20px;
+}
+
+.post-title {
+    font-weight: bold;
+    font-size: 3em;
+    margin-bottom: 5px;
+}
+
+.post-writer {
+    color: #AAA;
+}
+
+.post-content {
+    word-break: break-word;
+}

@@ -25,10 +25,14 @@
     </div>
   </div>
 </header>
-<section>
+<section class="page-section">
   <header class="post-header">
     <p class="post-title" th:text="${post.title}"></p>
+    <p class="post-writer" th:text="${post.user.username}"></p>
   </header>
+  <section class="post-section">
+    <span class="post-content" th:text="${post.content}"></span>
+  </section>
 </section>
 </body>
 </html>
