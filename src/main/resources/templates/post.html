@@ -35,7 +35,7 @@
   </section>
   <footer th:if="${isOwner}">
     <a th:href="@{/editor(id=${post.id})}"><button class="btn-edit">수정</button></a>
-    <form class="form-delete" th:action="@{/post/${post.id}/delete}" method="post"><button type="submit" class="btn-delete">삭제</button></form>
+    <form class="form-delete" th:action="@{'/post/'+${post.id}'+/delete}'" method="post"><button type="submit" class="btn-delete">삭제</button></form>
   </footer>
 </section>
 </body>
