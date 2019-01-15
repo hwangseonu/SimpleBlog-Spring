@@ -1,6 +1,7 @@
 package me.mocha.blog.controller;
 
 import me.mocha.blog.exception.ApplicationException;
+import me.mocha.blog.exception.ForbiddenException;
 import me.mocha.blog.exception.PostNotFoundException;
 import me.mocha.blog.exception.UnauthorizedException;
 import me.mocha.blog.model.entity.Post;
@@ -28,6 +29,7 @@ public class PostController {
         Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("post not found!", "/"));
         mav.addObject("user", user);
         mav.addObject("post", post);
+        mav.addObject("isOwner", post.getUser().equals(user));
         mav.setViewName("post");
         return mav;
     }
@@ -63,7 +65,7 @@ public class PostController {
         if (user == null) {
             throw new UnauthorizedException("Please login", "/login");
         }
-        Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("Post not found", "cannot find post by id"));
+        Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("cannot find post by id", "/"));
         post.setTitle(title);
         post.setContent(content);
         post = postRepository.save(post);
@@ -71,6 +73,18 @@ public class PostController {
             throw new ApplicationException("Server error", "cannot save post", "/", 500);
         }
         return "redirect:/post/"+post.getId();
+    }
+
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable("id") Long id, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("cannot find post by id", "/"));
+
+        if (!post.getUser().equals(user)) {
+            throw new ForbiddenException("This post is not your own", "/");
+        }
+        postRepository.delete(post);
+        return "redirect:/";
     }
 
 }

@@ -1,7 +1,7 @@
 @import "default.css";
 
 .page-section {
-    margin: 200px 10% 200px calc(500px + 10%);
+    margin: 200px 10% 0 calc(500px + 10%);
 }
 
 .post-header {
@@ -19,6 +19,52 @@
     color: #AAA;
 }
 
+.post-section {
+    min-height: 50vh;
+}
+
 .post-content {
     word-break: break-word;
+}
+
+.btn-edit {
+    padding: 0;
+    width: 45%;
+    height: 50px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background-color: #75ff5b;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #FFF;
+}
+
+.btn-edit:hover {
+    background-color: #40ab51;
+}
+
+.form-delete {
+    float: right;
+    width: 45%;
+    height: 50px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.btn-delete {
+    width: 100%;
+    height: 100%;
+    background-color: #ff4141;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #FFF;
+
+}
+
+.btn-delete:hover {
+    background-color: #b8192f;
 }
