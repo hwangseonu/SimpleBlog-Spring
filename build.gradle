@@ -29,6 +29,8 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.mariadb.jdbc:mariadb-java-client:2.1.2')
+    implementation('com.atlassian.commonmark:commonmark:0.12.1')
+    implementation('org.jsoup:jsoup:1.11.3')
     runtimeOnly('org.springframework.boot:spring-boot-devtools')
     compileOnly('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')

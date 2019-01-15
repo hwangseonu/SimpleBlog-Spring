@@ -7,6 +7,8 @@ import me.mocha.blog.exception.UnauthorizedException;
 import me.mocha.blog.model.entity.Post;
 import me.mocha.blog.model.entity.User;
 import me.mocha.blog.model.repository.PostRepository;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,6 +29,14 @@ public class PostController {
     public ModelAndView view(@PathVariable("id") long id, ModelAndView mav, HttpSession session) {
         User user = (User) session.getAttribute("user");
         Post post = postRepository.findById(id).orElseThrow(() -> new PostNotFoundException("post not found!", "/"));
+
+        post.addViews(1);
+        postRepository.save(post);
+
+        Parser parser = Parser.builder().build();
+        HtmlRenderer renderer = HtmlRenderer.builder().build();
+        String parsedContent = renderer.render(parser.parse(post.getContent()));
+        post.setContent(parsedContent);
         mav.addObject("user", user);
         mav.addObject("post", post);
         mav.addObject("isOwner", post.getUser().equals(user));
