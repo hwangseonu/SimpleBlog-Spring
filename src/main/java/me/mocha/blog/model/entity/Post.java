@@ -17,7 +17,7 @@ public class Post {
     @Getter
     private long id;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = false)
     @Getter
     @Setter
     private String title;

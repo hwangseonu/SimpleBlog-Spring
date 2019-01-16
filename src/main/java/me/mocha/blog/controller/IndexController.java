@@ -4,6 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import me.mocha.blog.model.entity.Post;
 import me.mocha.blog.model.entity.User;
 import me.mocha.blog.model.repository.PostRepository;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -32,6 +36,13 @@ public class IndexController {
                               @PageableDefault(size = 5, page = 0, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         User user = (User) session.getAttribute("user");
         Page<Post> posts = postRepository.findAll(pageable);
+        posts.getContent().forEach(p -> {
+            Parser parser = Parser.builder().build();
+            HtmlRenderer renderer = HtmlRenderer.builder().build();
+            String parsedContent = renderer.render(parser.parse(p.getContent()));
+            Document document = Jsoup.parse(parsedContent);
+            p.setContent(document.text());
+        });
         mav.addObject("posts", posts);
         mav.addObject("user", user);
         mav.setViewName("index");
