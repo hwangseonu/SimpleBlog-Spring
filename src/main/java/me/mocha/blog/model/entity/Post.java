@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class Post {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     @Getter
     private long id;
