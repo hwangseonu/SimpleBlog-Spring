@@ -37,8 +37,9 @@
         </article>
       </a>
     </section>
-    <footer>
-
+    <footer class="page-footer">
+      <a th:href="@{/(page=${posts.number - 1})}"><button class="btn-newer" th:unless="${posts.first}">&larr;Newer posts</button></a>
+      <a th:href="@{/(page=${posts.number + 1})}"><button class="btn-older" th:unless="${posts.last}">Older posts&rarr;</button></a>
     </footer>
   </body>
 </html>

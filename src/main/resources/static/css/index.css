@@ -28,11 +28,24 @@
     text-overflow: ellipsis;
     white-space: normal;
     line-height: 1.2;
-    height: 6em;
+    height: 3.6em;
     text-align: left;
     word-wrap: break-word;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     color: #5a5a5a;
+}
+
+.page-footer {
+    margin-left: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-newer, .btn-older {
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: #FFF;
+    height: 30px;
 }
