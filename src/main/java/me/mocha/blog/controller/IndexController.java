@@ -28,7 +28,7 @@ public class IndexController {
     }
 
     @RequestMapping("/")
-    public ModelAndView index(ModelAndView mav, HttpSession session,
+    public ModelAndView lists(ModelAndView mav, HttpSession session,
                               @PageableDefault(size = 5, page = 0, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         User user = (User) session.getAttribute("user");
         Page<Post> posts = postRepository.findAll(pageable);

@@ -1,1 +1,36 @@
 @import "default.css";
+
+.page-section {
+    margin: 100px 10% 0 calc(500px + 10%);
+}
+
+.post {
+    border-bottom: 2px solid #0e4a7a;
+}
+
+.post-title {
+    display: inline-block;
+    word-break: break-word;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.post-content {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.2;
+    height: 6em;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    color: #5a5a5a;
+}
